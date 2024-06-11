@@ -14,3 +14,11 @@ next-env.d.ts
 
 # VS Code
 .vscode/
+
+# Vim
+*.swp
+*.swo
+.vim/
+
+# MacOS
+.DS_Store
