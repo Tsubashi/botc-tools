@@ -3,14 +3,16 @@ import {TokenCanvas} from './ui/TokenCanvas'
 
 export default function Page() {
   return (
-    <TokenCanvas
+    <div>
+      <TokenCanvas
        diameter={512} 
        reminderCount={7}
         affectsSetup={true}
         firstNight={true}
         otherNights={true}
-        name="Test Role"
+        name="Test-y Roleieio"
         ability='Once before the game, define an ability here.'
-    />
+      />
+    </div>
   )
 }
