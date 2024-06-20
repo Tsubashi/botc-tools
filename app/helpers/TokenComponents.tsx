@@ -70,6 +70,7 @@ export async function loadComponents(baseUrl: string) {
     });
   }); 
 
+  // Wait for all fonts to be loaded
   await Promise.all(fontPromises);
 
   return components;
