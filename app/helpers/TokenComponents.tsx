@@ -1,5 +1,6 @@
 type TokenComponents = {
   tokenBG: HTMLImageElement;
+  icon: HTMLImageElement;
   leaves: HTMLImageElement[];
   firstNightLeaf: HTMLImageElement;
   otherNightLeaf: HTMLImageElement;
@@ -7,16 +8,27 @@ type TokenComponents = {
   font: {[key: string]: FontFace};
 };
 
-export async function loadComponents(baseUrl: string) {
+export async function loadComponents(baseUrl: string, iconURL: string) {
   // Prep our return object
   const components: TokenComponents = {
     tokenBG: new Image(),
+    icon: new Image(),
     leaves: [],
     setupFlower: new Image(),
     firstNightLeaf: new Image(),
     otherNightLeaf: new Image(),
     font: {}
   };
+
+  // Load the icon. First try the provided URL, then fall back to the default.
+  await new Promise<HTMLImageElement>((resolve, reject) => {
+    components.icon.src = iconURL;
+    components.icon.onload = () => resolve(components.icon);
+    components.icon.onerror = () => {
+      components.icon.src = `${baseUrl}/DefaultIcon.webp`;
+      components.icon.onload = () => resolve(components.icon);
+    };
+  });
 
   // Load the Images
   const imageUrls = [
