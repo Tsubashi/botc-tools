@@ -1,7 +1,6 @@
 'use client'
 import {RoleToken} from './ui/RoleToken'
 import { LoremIpsum } from 'lorem-ipsum';
-import React, { useState } from 'react';
 import { useForm, SubmitHandler } from "react-hook-form"
 
 interface FormValues {
@@ -27,33 +26,37 @@ export default function Page() {
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data)
 
   return (
-    <div>
-      <RoleToken
-        diameter={256} 
-        reminderCount={watch('reminders')?.length || 0}
-        affectsSetup={watch('affectsSetup')}
-        firstNight={watch('firstNight')}
-        otherNights={watch('otherNights')}
-        name={watch('role')}
-        ability={watch('ability')}
-      />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="role">Role</label>
-        <input {...register("role")} />
-        <label htmlFor="ability">Ability</label>
-        <input {...register("ability")} />
-        <label htmlFor="reminders">Reminders</label>
-        <input {...register("reminders")} />
-        <label htmlFor="affectsSetup">Affects Setup</label>
-        <input type="checkbox" {...register("affectsSetup")} />
-        <label htmlFor="firstNight">First Night</label>
-        <input type="checkbox" {...register("firstNight")} />
-        <label htmlFor="otherNights">Other Nights</label>
-        <input type="checkbox" {...register("otherNights")} />
-        <button type="submit">
-          Save
-        </button>
-      </form>
+    <div className="md:flex">
+      <div id="roleToken-container" className='w-fit rounded-lg p-2 border-emerald-800 border-4 mx-auto'>
+        <RoleToken
+          diameter={512} 
+          reminderCount={watch('reminders')?.length || 0}
+          affectsSetup={watch('affectsSetup')}
+          firstNight={watch('firstNight')}
+          otherNights={watch('otherNights')}
+          name={watch('role')}
+          ability={watch('ability')}
+        />
+      </div>
+      <div id="roleToken-form" className='w-full rounded-lg p-2 border-emerald-800 md:border-4 mx-auto md:mx-4'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label htmlFor="role">Role</label>
+          <input {...register("role")} />
+          <label htmlFor="ability">Ability</label>
+          <input {...register("ability")} />
+          <label htmlFor="reminders">Reminders</label>
+          <input {...register("reminders")} />
+          <label htmlFor="affectsSetup">Affects Setup</label>
+          <input type="checkbox" {...register("affectsSetup")} />
+          <label htmlFor="firstNight">First Night</label>
+          <input type="checkbox" {...register("firstNight")} />
+          <label htmlFor="otherNights">Other Nights</label>
+          <input type="checkbox" {...register("otherNights")} />
+          <button type="submit">
+            Save
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

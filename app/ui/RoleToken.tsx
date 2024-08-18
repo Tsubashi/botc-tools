@@ -159,6 +159,13 @@ export function RoleToken(
     });
   }, [reminderCount, affectsSetup, firstNight, otherNights, name, ability, componentURLBase, diameter, iconURL]);
 
-  return <canvas ref={canvasRef} width={diameter} height={diameter} />;
+  return(
+    <canvas 
+      id="roleToken" 
+      ref={canvasRef} 
+      width={diameter} 
+      height={diameter} 
+    />
+  );
 
 }

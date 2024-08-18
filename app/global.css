@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom fonts */
+@font-face {
+  font-family: "RoleName";
+  src: url("../public/components/default/RoleName.woff2");
+}
