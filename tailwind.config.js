@@ -8,8 +8,13 @@ module.exports = {
       fontFamily: {
         titleFont: ["RoleName", "sans-serif"],
       },
+      backgroundImage: {
+        'parchment-pattern': "url('/img/parchment.webp')",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 
